@@ -15,7 +15,7 @@ main PROC
 	mov edi, offset chess
 	mov eax, 0
 	call putqueen
-
+	
 	mov edx, offset msg1
 	call writestring
 	mov eax, sum
@@ -24,6 +24,7 @@ main PROC
 	
 	exit
 main ENDP
+
 putqueen proc
 ;edi:chess address
 ;esi:arr of arr1, arr2, arr3 address
