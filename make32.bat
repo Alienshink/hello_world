@@ -6,9 +6,9 @@ cls
 
 REM The following three lines can be customized for your system:
 REM ********************************************BEGIN customize
-SET PATH=D:\Assembly\fzuasm\bin
-SET INCLUDE=D:\Assembly\fzuasm\INCLUDE
-SET LIB=D:\Assembly\fzuasm\LIB
+SET PATH=D:\assembly\fzuasm\bin
+SET INCLUDE=D:\assembly\fzuasm\INCLUDE
+SET LIB=D:\assembly\fzuasm\LIB
 REM ********************************************END customize
 
 ML -Zi -c -Fl -coff %1.asm
