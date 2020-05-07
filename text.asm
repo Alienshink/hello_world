@@ -1,24 +1,24 @@
-;ÇóËØÒòÊı
+;æ±‚ç´ å› æ•°
 include irvine32.inc
 .data
-    num  dd 1    ;Ô­Êı
-    fir  dd 1    ;fir=1±íÊ¾µÚÒ»Ïî
-    p    dd 2    ;ËØÊı
-    e    dd ?    ;Ö¸Êı   
-    msg  db "ÇëÊäÈëÒ»¸öÕıÕûÊı£º", 0Dh, 0Ah, 0;
+    num  dd 1    ;åŸæ•°
+    fir  dd 1    ;fir=1è¡¨ç¤ºç¬¬ä¸€é¡¹
+    p    dd 2    ;ç´ æ•°
+    e    dd ?    ;æŒ‡æ•°   
+    msg  db "è¯·è¾“å…¥ä¸€ä¸ªæ­£æ•´æ•°ï¼š", 0Dh, 0Ah, 0;
 .code
 main proc
 	mov edx, offset msg;
 	call writestring;
     call readint   
-    mov  num,eax     ;eax´æ·ÅÔ­ÊıµÄÖµ,numÎªÒª·Ö½âµÄÊı
-    mov  ebx,p       ;ebx´æ·Åµ±Ç°µÄËØÊıp
-    mov  ecx,fir     ;ecx´æ·ÅµÚÒ»ÏîµÄ±êÖµfie=1ÎªµÚÒ»Ïî£¬·ñÔò²»»áµÚÒ»Ïî
+    mov  num,eax     ;eaxå­˜æ”¾åŸæ•°çš„å€¼,numä¸ºè¦åˆ†è§£çš„æ•°
+    mov  ebx,p       ;ebxå­˜æ”¾å½“å‰çš„ç´ æ•°p
+    mov  ecx,fir     ;ecxå­˜æ”¾ç¬¬ä¸€é¡¹çš„æ ‡å€¼fie=1ä¸ºç¬¬ä¸€é¡¹ï¼Œå¦åˆ™ä¸ä¼šç¬¬ä¸€é¡¹
 ;for(p=2;p<=a;p++)
 again:
     cmp ebx,num      ;p<=a
-    ja final         ;p>a¾Í½áÊøÑ­»·
-    call findpnum    ;µ÷ÓÃÇóËØÒò×Ó
+    ja final         ;p>aå°±ç»“æŸå¾ªç¯
+    call findpnum    ;è°ƒç”¨æ±‚ç´ å› å­
     inc ebx
     mov p,ebx
     jmp again;
@@ -30,15 +30,15 @@ main endp
 findpnum proc
 
 	mov edx, 0		  ;
-    mov esi, 0        ;esi´æ·ÅÖ¸ÊıeµÄÖµ
+    mov esi, 0        ;esiå­˜æ”¾æŒ‡æ•°eçš„å€¼
     mov eax, num;
     div ebx
     cmp edx,0
-    jnz next         ;N%i!=0Ö±½ÓÌøµ½ºóÃæµÄ²Ù×÷
-    mov eax, num	 ;Ã»ÓĞµÄ»°¾Í±ä³ÉÉÌÁË
-    call find_e      ;ÇóÖ¸Êı
-    mov esi,eax      ;½«ÇóÖ¸Êıº¯ÊıµÄeax·Å»ØesiÖĞ
-    mov eax,num      ;½«numÖµ»¹¸øeax
+    jnz next         ;N%i!=0ç›´æ¥è·³åˆ°åé¢çš„æ“ä½œ
+    mov eax, num	 ;æ²¡æœ‰çš„è¯å°±å˜æˆå•†äº†
+    call find_e      ;æ±‚æŒ‡æ•°
+    mov esi,eax      ;å°†æ±‚æŒ‡æ•°å‡½æ•°çš„eaxæ”¾å›esiä¸­
+    mov eax,num      ;å°†numå€¼è¿˜ç»™eax
 next:
     cmp esi,0
     jz final
@@ -87,26 +87,24 @@ find_e endp
 output proc
     push eax
     push ebx
-;    push ecx
+
     push edx
     push esi
     push edi
 	mov ecx, 0;
-;    mov al,'*'
-;    call writechar
+
     mov eax,ebx
-;    call writeint
+
 	call writedec
     mov al,'^'
     call writechar
     mov eax,esi
-;    call writeint
-	call writedec
 
+	call writedec
     pop  edi
     pop  esi
     pop  edx
-;   pop  ecx
+
     pop  ebx
     pop  eax
          ret
